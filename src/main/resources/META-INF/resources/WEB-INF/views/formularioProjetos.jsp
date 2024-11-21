@@ -99,11 +99,8 @@
                 jsonData[key] = value;
             });
 
-            console.log(jsonData,'antes');
             jsonData['gerenteId'] = jsonData['gerente.id'];
             delete jsonData['gerente.id'];
-
-            console.log(jsonData,'depois');
 
             fetch('/projetos/salvar', {
                 method: 'POST',

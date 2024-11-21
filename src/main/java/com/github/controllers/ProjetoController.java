@@ -97,13 +97,22 @@ public class ProjetoController {
 
     @PostMapping("/removerProjeto")
     public ResponseEntity<Void> removerProjeto(@RequestParam("id") Long id) {
-        System.out.println("ID recebido: " + id);
         try {
+            Projeto projeto = projetoService.buscarPorId(id);
+            if (projeto == null) {
+                throw new RuntimeException("Projeto não encontrado para o ID: " + id);
+            }
+
+            if (projeto.getStatus().equalsIgnoreCase("Iniciado") ||
+                    projeto.getStatus().equalsIgnoreCase("Em Andamento") ||
+                    projeto.getStatus().equalsIgnoreCase("Encerrado")) {
+                throw new RuntimeException("Não é possível excluir o projeto com status: " + projeto.getStatus());
+            }
+
             projetoService.removerProjeto(id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
-
 }
