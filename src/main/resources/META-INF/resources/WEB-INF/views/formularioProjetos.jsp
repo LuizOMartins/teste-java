@@ -13,7 +13,7 @@
     <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
     <br/><br/>
 
-    <form action="/projetos/salvar" method="post">
+    <form id="projetoForm">
         <!-- Campo oculto para o ID do projeto -->
         <input type="hidden" name="id" value="${projeto.id}" />
 
@@ -76,11 +76,48 @@
                 </option>
             </c:forEach>
         </select>
+
         <br/><br/>
 
         <!-- Botões -->
-        <button type="submit">Salvar</button>
+        <button type="button" onclick="submitForm()">Salvar</button>
         <button type="reset">Limpar</button>
     </form>
+    <script>
+        function submitForm() {
+            const form = document.getElementById('projetoForm');
+            const formData = new FormData(form);
+
+            const jsonData = {};
+            formData.forEach((value, key) => {
+                jsonData[key] = value;
+            });
+
+            console.log(jsonData,'antes');
+            jsonData['gerenteId'] = jsonData['gerente.id'];
+            delete jsonData['id'];
+            delete jsonData['gerente.id'];
+
+            console.log(jsonData,'depois');
+
+            fetch('/projetos/salvar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonData)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Projeto salvo com sucesso!');
+                    window.location.href = '/gerenciamentoProjetos';
+                } else {
+                    alert('Erro ao salvar projeto!');
+                }
+            }).catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao salvar projeto!');
+            });
+        }
+    </script>
 </body>
 </html>

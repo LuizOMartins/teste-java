@@ -68,4 +68,17 @@ public class Membros {
     public void setDataAssociacao(LocalDateTime dataAssociacao) {
         this.dataAssociacao = dataAssociacao;
     }
+
+    @Override
+    public String toString() {
+        return "Membros{" +
+                "id=" + id +
+                ", projeto=" + (projeto != null ? "Projeto{id=" + projeto.getId() + ", nome='" + projeto.getNome() + "'}" : "null") +
+                ", pessoa=" + (pessoa != null ? "Pessoa{id=" + pessoa.getId() + ", nome='" + pessoa.getNome() + "'}" : "null") +
+                ", cargo='" + cargo + '\'' +
+                ", dataAssociacao=" + dataAssociacao +
+                '}';
+    }
+
+
 }

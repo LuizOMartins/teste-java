@@ -73,4 +73,19 @@ public class Pessoa {
     public void setGerente(Boolean gerente) {
         this.gerente = gerente;
     }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", cpf='" + cpf + '\'' +
+                ", funcionario=" + funcionario +
+                ", gerente=" + gerente +
+                '}';
+    }
+
+
+
 }

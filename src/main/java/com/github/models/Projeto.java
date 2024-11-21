@@ -128,4 +128,23 @@ public class Projeto {
     public void setGerente(Pessoa gerente) {
         this.gerente = gerente;
     }
+
+    @Override
+    public String toString() {
+        return "Projeto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataInicio=" + dataInicio +
+                ", dataPrevisaoFim=" + dataPrevisaoFim +
+                ", dataFim=" + dataFim +
+                ", descricao='" + descricao + '\'' +
+                ", status='" + status + '\'' +
+                ", orcamento=" + orcamento +
+                ", risco='" + risco + '\'' +
+                ", gerente=" + (gerente != null ? gerente.getId() + " - " + gerente.getNome() : "null") +
+                '}';
+    }
+
+
+
 }

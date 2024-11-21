@@ -1,8 +1,10 @@
 package com.github.controllers;
 
+import com.github.dtos.ProjetoDTO;
+import com.github.models.Pessoa;
 import com.github.models.Projeto;
+import com.github.service.PessoaService;
 import com.github.service.ProjetoService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +12,15 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/projetos")
+@RequestMapping("/projetos")
 public class ProjetoController {
 
     private final ProjetoService projetoService;
+    private final PessoaService pessoaService;
 
-    public ProjetoController(ProjetoService projetoService) {
+    public ProjetoController(ProjetoService projetoService, PessoaService pessoaService) {
         this.projetoService = projetoService;
+        this.pessoaService = pessoaService;
     }
 
     @GetMapping
@@ -37,11 +41,24 @@ public class ProjetoController {
         return ResponseEntity.ok(projeto);
     }
 
-    @PostMapping
-    public ResponseEntity<Projeto> criarProjeto(@RequestBody Projeto projeto) {
-        Projeto novoProjeto = projetoService.salvar(projeto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoProjeto);
+    @PostMapping("/salvar")
+    public String criarProjeto(@RequestBody ProjetoDTO projetoDTO) {
+        Projeto projeto = new Projeto();
+        projeto.setNome(projetoDTO.getNome());
+        projeto.setDescricao(projetoDTO.getDescricao());
+        projeto.setStatus(projetoDTO.getStatus());
+        projeto.setRisco(projetoDTO.getRisco());
+        projeto.setOrcamento(projetoDTO.getOrcamento());
+        projeto.setDataInicio(projetoDTO.getDataInicio());
+        projeto.setDataPrevisaoFim(projetoDTO.getDataPrevisaoFim());
+        projeto.setDataFim(projetoDTO.getDataFim());
+        Pessoa gerente = pessoaService.buscarPorId(projetoDTO.getGerenteId());
+        projeto.setGerente(gerente);
+        projetoService.salvar(projeto);
+        return "redirect:/gerenciamentoProjetos";
     }
+
+
 
 
     @PutMapping("/{id}")
