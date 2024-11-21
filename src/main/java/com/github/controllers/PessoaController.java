@@ -33,7 +33,11 @@ public class PessoaController {
     }
 
     @PostMapping("/salvar")
-    public String salvarPessoa(@ModelAttribute Pessoa pessoa) {
+    public String salvarPessoa(@ModelAttribute Pessoa pessoa,
+                               @RequestParam(required = false, defaultValue = "false") boolean funcionario,
+                               @RequestParam(required = false, defaultValue = "false") boolean gerente) {
+        pessoa.setFuncionario(funcionario);
+        pessoa.setGerente(gerente);
         pessoaService.salvar(pessoa);
         return "redirect:/gerenciamentoPessoa";
     }

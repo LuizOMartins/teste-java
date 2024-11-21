@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,10 @@
 <body>
     <h1>Cadastro de Membro</h1>
     <a href="/gerenciamentoProjetos">Home</a>
+    <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
+    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
     <a href="gerenciamentoMembros">Voltar</a>
+
 
     <form action="/membros/salvar" method="post">
         <input type="hidden" name="id" value="${membro.id}" />

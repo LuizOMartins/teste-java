@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,7 @@
     <h1>Gerenciamento de Membros</h1>
     <a href="/gerenciamentoProjetos" >Home</a>
     <a href="/formularioMembro">Adicionar Novo Membro</a>
-
+    <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
     <table border="1">
         <thead>
             <tr>

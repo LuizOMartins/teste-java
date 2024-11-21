@@ -40,11 +40,15 @@ public class HomeController {
 
     }
 
-
     @GetMapping("/gerenciamentoPessoa")
-    public String gerenciamentoPessoa() {
+    public String listarPessoas(Model model) {
+        List<Pessoa> pessoas = pessoaService.listarTodos();
+        System.out.println("Pessoas carregadas: " + pessoas); // Adicione este log para depurar
+        model.addAttribute("pessoas", pessoas);
         return "gerenciamentoPessoa";
     }
+
+
 
     @GetMapping("/formularioPessoa")
     public String formularioPessoa(@RequestParam(required = false) Long id, Model model) {

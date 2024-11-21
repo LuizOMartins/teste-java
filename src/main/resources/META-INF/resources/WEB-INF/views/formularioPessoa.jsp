@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
 </head>
 <body>
     <h1>Cadastro de Pessoa</h1>
+    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
     <a href="/gerenciamentoPessoa">Voltar</a>
 
     <form action="/pessoas/salvar" method="post">
@@ -15,10 +17,17 @@
         <input type="text" id="nome" name="nome" value="${pessoa.nome}" required maxlength="100" /><br/>
 
         <label for="dataNascimento">Data de Nascimento:</label>
-        <input type="date" id="dataNascimento" name="dataNascimento" value="${pessoa.dataNascimento}" required />
+        <input type="date" id="dataNascimento" name="dataNascimento" value="${pessoa.dataNascimento}" required /><br/>
 
+        <!-- CPF -->
         <label for="cpf">CPF:</label>
         <input type="text" id="cpf" name="cpf" value="${pessoa.cpf}" required maxlength="14" /><br/>
+
+        <label for="funcionario">É Funcionário?</label>
+        <input type="checkbox" id="funcionario" name="funcionario" ${pessoa.funcionario ? 'checked' : ''} /><br/>
+
+        <label for="gerente">É Gerente?</label>
+        <input type="checkbox" id="gerente" name="gerente" ${pessoa.gerente ? 'checked' : ''} /><br/><br/>
 
         <button type="submit">Salvar</button>
     </form>
