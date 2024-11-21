@@ -2,7 +2,6 @@ package com.github.controllers;
 
 import com.github.models.Membros;
 import com.github.models.Pessoa;
-import com.github.models.Projeto;
 import com.github.service.MembrosService;
 import com.github.service.PessoaService;
 import com.github.service.ProjetoService;

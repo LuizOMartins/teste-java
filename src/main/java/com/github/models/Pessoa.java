@@ -1,14 +1,11 @@
 package com.github.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class Pessoa {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,15 +13,19 @@ public class Pessoa {
     @Column(nullable = false, length = 100)
     private String nome;
 
+    @Column
     private LocalDate dataNascimento;
 
     @Column(length = 14, unique = true)
     private String cpf;
 
+    @Column
     private Boolean funcionario;
 
+    @Column
     private Boolean gerente;
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }
