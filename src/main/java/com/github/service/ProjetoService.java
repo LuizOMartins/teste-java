@@ -41,4 +41,9 @@ public class ProjetoService {
     public void deletar(Long id) {
         projetoRepository.deleteById(id);
     }
+
+    public List<Projeto> listarTodos() {
+        return projetoRepository.findAll();
+    }
+
 }

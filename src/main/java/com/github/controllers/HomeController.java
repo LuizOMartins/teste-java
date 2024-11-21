@@ -13,8 +13,13 @@ public class HomeController {
     }
 
     @GetMapping("/gerenciamentoMembros")
-    public String about() {
+    public String gerenciamentoMembros() {
         return "gerenciamentoMembros";
+    }
+
+    @GetMapping("/formularioMembro")
+    public String formularioMembro() {
+        return "formularioMembro";
     }
 
 }

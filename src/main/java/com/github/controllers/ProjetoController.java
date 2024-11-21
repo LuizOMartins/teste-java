@@ -32,7 +32,7 @@ public class ProjetoController {
     public ResponseEntity<Projeto> buscarProjetoPorId(@PathVariable Long id) {
         Projeto projeto = projetoService.buscarPorId(id);
         if (projeto == null) {
-            return ResponseEntity.notFound().build()
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(projeto);
     }
