@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +72,7 @@
         <select name="gerente.id" required>
             <c:forEach items="${gerentes}" var="gerente">
                 <option value="${gerente.id}" ${projeto.gerente != null && gerente.id == projeto.gerente.id ? 'selected' : ''}>
-                    ${gerente.nome}
+                    ${gerente.nome} - ${gerente.cpf}
                 </option>
             </c:forEach>
         </select>
