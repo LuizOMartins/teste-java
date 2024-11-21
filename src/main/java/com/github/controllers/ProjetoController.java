@@ -5,6 +5,7 @@ import com.github.models.Pessoa;
 import com.github.models.Projeto;
 import com.github.service.PessoaService;
 import com.github.service.ProjetoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -93,4 +94,16 @@ public class ProjetoController {
         projetoService.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/removerProjeto")
+    public ResponseEntity<Void> removerProjeto(@RequestParam("id") Long id) {
+        System.out.println("ID recebido: " + id);
+        try {
+            projetoService.removerProjeto(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

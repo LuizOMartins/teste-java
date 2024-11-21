@@ -5,7 +5,7 @@ PESSOA
 - Tela Gerenciamento - ok
 
 - Tela Cadastro Projeto - ok
---Gerenciamento Projeto - listagem
+--Gerenciamento Projeto - remoção ?
 
 
 - Tela Membros

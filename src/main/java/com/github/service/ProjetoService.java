@@ -46,4 +46,20 @@ public class ProjetoService {
         return projetoRepository.findAll();
     }
 
+    public List<Projeto> listarTodosProjetos() {
+        return projetoRepository.findAll();
+    }
+
+    public void removerProjeto(Long id) {
+        Optional<Projeto> projeto = projetoRepository.findById(id);
+
+        if (projeto.isPresent()) {
+            projetoRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Projeto com ID " + id + " não encontrado.");
+        }
+    }
+
+
+
 }

@@ -11,9 +11,7 @@
     <a href="/gerenciamentoMembros">Gerenciamento de Membros</a>
     <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
     <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
-
     <br/><br/>
-
     <!-- Link para o formulário de cadastro de projeto -->
     <a href="/formularioProjetos">Cadastrar Novo Projeto</a>
     <br/><br/>
@@ -47,13 +45,46 @@
                     <td>${projeto.orcamento}</td>
                     <td>${projeto.gerente != null ? projeto.gerente.nome : 'Não atribuído'}</td>
                     <td>
-                        <!-- Links para Editar e Remover -->
-                        <a href="/formularioProjetos?id=${projeto.id}">Editar</a>&nbsp;
-                        <a href="/projetos?id=${projeto.id}" onclick="return confirm('Deseja realmente excluir este projeto?');">Remover</a>
+                        <button onclick="removerProjeto('${projeto.id}')">Remover</button>
                     </td>
                 </tr>
             </c:forEach>
         </tbody>
+        <p id="demo"></p>
     </table>
+<script>
+
+    function removerProjeto(id) {
+        console.log(id);
+        document.getElementById("demo").innerHTML = "Para remover:" + id + ".";
+              if (!id) {
+                        console.error('ID não fornecido!');
+                        return;
+                    }
+
+        if (confirm('Deseja realmente excluir este projeto?')) {
+            fetch('/removerProjeto', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `id=${id}`,
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Projeto removido com sucesso!');
+                    document.querySelector(`button[data-id="${id}"]`).closest('tr').remove();
+                } else {
+                    console.error('Erro na resposta do servidor:', response.status);
+                    alert('Erro ao remover o projeto!');
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+                alert('Erro ao remover o projeto!');
+            });
+        }
+    }
+</script>
 </body>
 </html>
