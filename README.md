@@ -5,10 +5,10 @@ PESSOA
 - Tela Gerenciamento - ok
 
 - Tela Cadastro Projeto - ok
---Gerenciamento Projeto - remoção ?
+--Gerenciamento Projeto - ok
 
 
-- Tela Membros
+- Tela Membros - andamento
 --Tela Gerenciamento de Membros
 
 

@@ -37,9 +37,12 @@ public class HomeController {
     }
 
     @GetMapping("/formularioMembro")
-    public String formularioMembro() {
+    public String formularioMembro(@RequestParam(required = false) Long id, Model model) {
+        List<Projeto> projeto = projetoService.listarTodosProjetos();
+        List<Pessoa> pessoas = pessoaService.listarTodos();
+        model.addAttribute("pessoas", pessoas);
+        model.addAttribute("projeto", projeto);
         return "formularioMembro";
-
     }
 
     @GetMapping("/gerenciamentoPessoa")
