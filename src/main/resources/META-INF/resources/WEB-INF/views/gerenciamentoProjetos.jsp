@@ -54,37 +54,40 @@
     </table>
 <script>
 
-    function removerProjeto(id) {
-        console.log(id);
-        document.getElementById("demo").innerHTML = "Para remover:" + id + ".";
-              if (!id) {
-                        console.error('ID não fornecido!');
-                        return;
-                    }
+function removerProjeto(id) {
+    console.log(id);
+    document.getElementById("demo").innerHTML = "Para remover: " + id + ".";
 
-        if (confirm('Deseja realmente excluir este projeto?')) {
-            fetch('/removerProjeto', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `id=${id}`,
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Projeto removido com sucesso!');
-                    document.querySelector(`button[data-id="${id}"]`).closest('tr').remove();
-                } else {
-                    console.error('Erro na resposta do servidor:', response.status);
-                    alert('Erro ao remover o projeto!');
-                }
-            })
-            .catch(error => {
-                console.error('Erro na requisição:', error);
-                alert('Erro ao remover o projeto!');
-            });
-        }
+    if (!id) {
+        console.error('ID não fornecido!');
+        return;
     }
+
+    if (confirm('Deseja realmente excluir este projeto?')) {
+        fetch('/projetos/removerProjeto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ id }), // Codifica o ID no formato correto
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Projeto removido com sucesso!');
+                window.location.reload();
+                document.querySelector(`button[data-id="${id}"]`).closest('tr').remove();
+            } else {
+                console.error('Erro na resposta do servidor:', response.status);
+                alert('Erro ao remover o projeto!');
+            }
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+            alert('Erro ao remover o projeto!');
+        });
+    }
+}
+
 </script>
 </body>
 </html>
