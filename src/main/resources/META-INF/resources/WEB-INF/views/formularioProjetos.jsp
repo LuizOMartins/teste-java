@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Cadastro de Projeto</h1>
+    <a href="/gerenciamentoProjetos">Home - Projetos</a>
     <a href="/gerenciamentoProjetos">Voltar</a>
     <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
-    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
     <br/><br/>
 
     <form id="projetoForm">

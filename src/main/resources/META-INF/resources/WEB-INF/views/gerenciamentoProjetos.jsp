@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Gerenciamento de Projetos</h1>
+    <a href="/gerenciamentoProjetos">Home - Projetos</a>
     <a href="/gerenciamentoMembros">Gerenciamento de Membros</a>
     <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
-    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
     <br/><br/>
     <!-- Link para o formulário de cadastro de projeto -->
     <a href="/formularioProjetos">Cadastrar Novo Projeto</a>

@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Cadastro de Pessoa</h1>
-    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
+    <a href="/gerenciamentoProjetos">Home - Projetos</a>
     <a href="/gerenciamentoPessoa">Voltar</a>
 
     <form action="/pessoas/salvar" method="post">

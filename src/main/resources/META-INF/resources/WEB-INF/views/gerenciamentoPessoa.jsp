@@ -8,9 +8,9 @@
 </head>
 <body>
     <h1>Gerenciamento de Pessoas</h1>
+    <a href="/gerenciamentoProjetos">Home - Projetos</a>
     <a href="/formularioPessoa">Cadastrar Nova Pessoa</a>
     <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
-    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
 
     <br/><br/>
     <%-- Verifica se a lista de pessoas está chegando --%>

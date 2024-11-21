@@ -8,9 +8,8 @@
 </head>
 <body>
     <h1>Cadastro de Membro</h1>
-    <a href="/gerenciamentoProjetos">Home</a>
+    <a href="/gerenciamentoProjetos">Home - Projetos</a>
     <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
-    <a href="/gerenciamentoProjetos">Gerenciamento Projetos</a>
     <a href="/gerenciamentoMembros">Voltar</a>
 
 

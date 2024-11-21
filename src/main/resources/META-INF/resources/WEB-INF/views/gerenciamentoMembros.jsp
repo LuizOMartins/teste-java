@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Gerenciamento de Membros</h1>
-    <a href="/gerenciamentoProjetos" >Home</a>
+    <a href="/gerenciamentoProjetos">Home - Projetos</a>
     <a href="/formularioMembro">Adicionar Novo Membro</a>
     <a href="/gerenciamentoPessoa">Gerenciamento de Pessoas</a>
     <table border="1">
