@@ -5,6 +5,16 @@ INSTALL:
 Executar Teste:
 mvn test -X
 
+Exemplo endpoint public:
+
+curl -X POST "http://localhost:8081/membros/cadastro-publico" \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "projetoId=7" \
+-d "nome=João da Silva" \
+-d "cpf=12345678900" \
+-d "dataNascimento=1990-01-01T00:00:00" \
+-d "cargo=Desenvolvedor"
+
 
 TODO
 

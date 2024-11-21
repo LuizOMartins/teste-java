@@ -6,10 +6,13 @@ import com.github.models.Projeto;
 import com.github.service.MembrosService;
 import com.github.service.PessoaService;
 import com.github.service.ProjetoService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -84,8 +87,6 @@ public class MembrosController {
         }
     }
 
-
-
     @GetMapping("/formularioMembro")
     public String formularioMembro(@RequestParam(required = false) Long id, Model model) {
         List<Projeto> projetos = projetoService.listarTodosProjetos();
@@ -105,6 +106,43 @@ public class MembrosController {
         membrosService.excluir(id);
         return "redirect:/gerenciamentoMembros";
     }
+
+    @PostMapping("/cadastro-publico")
+    @ResponseBody
+    public ResponseEntity<String> cadastrarMembroPublico(
+            @RequestParam Long projetoId,
+            @RequestParam String nome,
+            @RequestParam String cpf,
+            @RequestParam String dataNascimento,
+            @RequestParam String cargo) {
+        try {
+            
+            Projeto projeto = projetoService.buscarPorId(projetoId);
+            if (projeto == null) {
+                return ResponseEntity.badRequest().body("Projeto não encontrado para o ID: " + projetoId);
+            }
+
+            Pessoa pessoa = new Pessoa();
+            pessoa.setNome(nome);
+            pessoa.setCpf(cpf);
+            pessoa.setDataNascimento(LocalDate.parse(dataNascimento)); // Converte String para LocalDate
+            pessoa = pessoaService.salvar(pessoa);
+            Membros membro = new Membros();
+            membro.setPessoa(pessoa);
+            membro.setProjeto(projeto);
+            membro.setCargo(cargo);
+            membro.setDataAssociacao(LocalDateTime.now());
+            membrosService.salvar(membro);
+
+            return ResponseEntity.ok("Membro cadastrado com sucesso!");
+        } catch (Exception e) {
+            System.err.println("Erro ao cadastrar membro: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar membro.");
+        }
+    }
+
+
+
 
 
 }
