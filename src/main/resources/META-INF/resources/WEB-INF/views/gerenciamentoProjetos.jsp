@@ -69,7 +69,7 @@ function removerProjeto(id) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: new URLSearchParams({ id }), // Codifica o ID no formato correto
+            body: new URLSearchParams({ id }),
         })
         .then(response => {
             if (response.ok) {
