@@ -44,12 +44,18 @@
 
         <!-- Status -->
         <label for="status">Status:</label>
-        <select id="status" name="status" required>
-            <option value="">Selecione</option>
-            <option value="Em Andamento" ${projeto.status == 'Em Andamento' ? 'selected' : ''}>Em Andamento</option>
-            <option value="Concluído" ${projeto.status == 'Concluído' ? 'selected' : ''}>Concluído</option>
-            <option value="Cancelado" ${projeto.status == 'Cancelado' ? 'selected' : ''}>Cancelado</option>
-        </select>
+       <select id="status" name="status" required>
+           <option value="">Selecione</option>
+           <option value="Em Análise" ${projeto.status == 'Em Análise' ? 'selected' : ''}>Em Análise</option>
+           <option value="Análise Realizada" ${projeto.status == 'Análise Realizada' ? 'selected' : ''}>Análise Realizada</option>
+           <option value="Análise Aprovada" ${projeto.status == 'Análise Aprovada' ? 'selected' : ''}>Análise Aprovada</option>
+           <option value="Iniciado" ${projeto.status == 'Iniciado' ? 'selected' : ''}>Iniciado</option>
+           <option value="Planejado" ${projeto.status == 'Planejado' ? 'selected' : ''}>Planejado</option>
+           <option value="Em Andamento" ${projeto.status == 'Em Andamento' ? 'selected' : ''}>Em Andamento</option>
+           <option value="Encerrado" ${projeto.status == 'Encerrado' ? 'selected' : ''}>Encerrado</option>
+           <option value="Cancelado" ${projeto.status == 'Cancelado' ? 'selected' : ''}>Cancelado</option>
+       </select>
+
         <br/><br/>
 
         <!-- Orçamento -->
