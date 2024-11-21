@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Cadastro de Membro</h1>
-    <a href="/">Home</a>
+    <a href="/gerenciamentoProjetos">Home</a>
     <a href="gerenciamentoMembros">Voltar</a>
 
     <form action="/membros/salvar" method="post">
