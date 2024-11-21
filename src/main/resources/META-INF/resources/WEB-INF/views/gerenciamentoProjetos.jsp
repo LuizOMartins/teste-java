@@ -46,6 +46,7 @@
                     <td>${projeto.gerente != null ? projeto.gerente.nome : 'Não atribuído'}</td>
                     <td>
                         <button onclick="removerProjeto('${projeto.id}')">Remover</button>
+                        <a href="/formularioProjetos?id=${projeto.id}">Editar</a>
                     </td>
                 </tr>
             </c:forEach>
