@@ -30,7 +30,7 @@
                     <td>${membro.cargo}</td>
                     <td>${membro.dataAssociacao}</td>
                     <td>
-                        <a href="/membros/form?id=${membro.id}">Editar</a>
+                        <a href="/formularioMembro?id=${membro.id}">Editar</a>
                         <a href="/membros/excluir?id=${membro.id}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                     </td>
                 </tr>

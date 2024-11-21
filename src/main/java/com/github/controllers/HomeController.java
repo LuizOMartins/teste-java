@@ -1,7 +1,9 @@
 package com.github.controllers;
 
+import com.github.models.Membros;
 import com.github.models.Pessoa;
 import com.github.models.Projeto;
+import com.github.service.MembrosService;
 import com.github.service.PessoaService;
 import com.github.service.ProjetoService;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,13 @@ public class HomeController {
 
     private final ProjetoService projetoService;
     private final PessoaService pessoaService;
+    private final MembrosService membrosService;
 
 
-    public HomeController(ProjetoService projetoService,PessoaService pessoaService) {
+    public HomeController(ProjetoService projetoService,PessoaService pessoaService, MembrosService membrosService) {
         this.projetoService = projetoService;
         this.pessoaService = pessoaService;
+        this.membrosService = membrosService;
     }
 
     @GetMapping({"/", "/gerenciamentoProjetos"})
@@ -32,7 +36,11 @@ public class HomeController {
     }
 
     @GetMapping("/gerenciamentoMembros")
-    public String gerenciamentoMembros() {
+    public String gerenciamentoMembros(Model model)
+    {
+        List<Membros> membros = membrosService.listarTodos();
+        model.addAttribute("membros", membros);
+
         return "gerenciamentoMembros";
     }
 
