@@ -48,6 +48,42 @@ public class MembrosService {
         membrosRepository.save(membro);
     }
 
+    public void excluir(Long id) {
+        Membros membro = membrosRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Membro não encontrado com o ID: " + id));
+
+        if (membro.getProjeto() != null) {
+            Projeto projeto = membro.getProjeto();
+            projeto.getMembros().remove(membro);
+            projetoRepository.save(projeto);
+        }
+
+        membrosRepository.delete(membro);
+    }
+
+    public void desvincularEExcluir(Long id) {
+        Membros membro = membrosRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Membro não encontrado com o ID: " + id));
+
+        membro.setProjeto(null);
+
+        membrosRepository.delete(membro);
+
+        System.out.println("Membro ID: " + id + " removido com sucesso.");
+    }
+
+    public void desvincularMembro(Long id) {
+        System.out.println("Buscando membro com ID: " + id);
+        Membros membro = membrosRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Membro não encontrado com o ID: " + id));
+
+        System.out.println("Desvinculando membro do projeto e removendo registro...");
+        membro.setProjeto(null);
+        membrosRepository.delete(membro);
+        System.out.println("Membro com ID " + id + " removido com sucesso.");
+    }
+
+
 
     public List<Membros> listarTodos() {
         return membrosRepository.findAll();

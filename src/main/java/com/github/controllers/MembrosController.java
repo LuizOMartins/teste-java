@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -49,7 +50,10 @@ public class MembrosController {
         System.out.println("Cargo: " + membro.getCargo());
         System.out.println("Data de Associação: " + membro.getDataAssociacao());
 
-        // Validações
+        if (membro.getId() == null) {
+            membro.setDataAssociacao(LocalDateTime.now());
+        }
+
         if (membro.getProjeto() == null || membro.getProjeto().getId() == null) {
             throw new IllegalArgumentException("Projeto não informado!");
         }
@@ -68,6 +72,20 @@ public class MembrosController {
         return "redirect:/gerenciamentoMembros";
     }
 
+    @PostMapping("/desvincular")
+    public String desvincularMembro(@RequestParam Long id) {
+        try {
+            System.out.println("Desvinculando membro com ID: " + id);
+            membrosService.desvincularMembro(id);
+            return "redirect:/gerenciamentoMembros";
+        } catch (Exception e) {
+            System.err.println("Erro ao desvincular membro: " + e.getMessage());
+            return "redirect:/gerenciamentoMembros";
+        }
+    }
+
+
+
     @GetMapping("/formularioMembro")
     public String formularioMembro(@RequestParam(required = false) Long id, Model model) {
         List<Projeto> projetos = projetoService.listarTodosProjetos();
@@ -81,5 +99,12 @@ public class MembrosController {
 
         return "formularioMembro";
     }
+
+    @GetMapping("/excluir")
+    public String excluirMembro(@RequestParam("id") Long id) {
+        membrosService.excluir(id);
+        return "redirect:/gerenciamentoMembros";
+    }
+
 
 }

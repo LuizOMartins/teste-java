@@ -42,9 +42,7 @@
     <label for="cargo">Cargo:</label>
     <input type="text" name="cargo" value="${membro.cargo}" required maxlength="100" /><br/>
 
-    <label for="dataAssociacao">Data de Associação:</label>
-    <input type="datetime-local" name="dataAssociacao"
-           value="${membro.dataAssociacao != null ? membro.dataAssociacao.toString().replace(' ', 'T') : ''}" /><br/><br/>
+    <br/><br/>
 
     <button type="submit">Salvar</button>
 </form>

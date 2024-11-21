@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Projeto {
@@ -71,6 +72,10 @@ public class Projeto {
 
     public void setDataInicio(Date dataInicio) {
         this.dataInicio = dataInicio;
+    }
+
+    public List<Membros> getMembros() {
+        return getMembros();
     }
 
     public Date getDataPrevisaoFim() {

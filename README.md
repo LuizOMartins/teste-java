@@ -10,8 +10,10 @@ PESSOA
 - Tela Membros - ok
 --Tela Gerenciamento de Membros - ok
 
+-- Desassociar membro do projeto pendente - ok
 
--- Desassociar membro do projeto pendente
+
+
 --Aplicar Regras - pendente
 --Aplicar testes - pendente
 -- Estilização (bootstrap) - pendente

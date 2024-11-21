@@ -31,11 +31,47 @@
                     <td>${membro.dataAssociacao}</td>
                     <td>
                         <a href="/formularioMembro?id=${membro.id}">Editar</a>
-                        <a href="/membros/excluir?id=${membro.id}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        <button onclick="removerMembro('${membro.id}')">Remover</button>
                     </td>
                 </tr>
             </c:forEach>
         </tbody>
+        <p id="demo"></p>
     </table>
 </body>
+<script>
+function removerMembro(id) {
+    console.log(id);
+    document.getElementById("demo").innerHTML = "Para remover o membro: " + id + ".";
+
+    if (!id) {
+        console.error('ID do membro não fornecido!');
+        return;
+    }
+
+    if (confirm('Deseja realmente remover este membro?')) {
+        fetch('/membros/desvincular', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({ id }),
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Membro removido com sucesso!');
+                window.location.reload(); // Atualiza a página após a remoção
+            } else {
+                console.error('Erro na resposta do servidor:', response.status);
+                alert('Erro ao remover o membro!');
+            }
+        })
+        .catch(error => {
+            console.error('Erro na requisição:', error);
+            alert('Erro ao remover o membro!');
+        });
+    }
+}
+
+</script
 </html>
