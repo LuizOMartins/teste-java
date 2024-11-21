@@ -1,3 +1,12 @@
+INSTALL:
+ -apache-maven-3.8.6
+
+
+Executar Teste:
+mvn test -X
+
+
+
 TODO
 
 PESSOA
@@ -19,3 +28,6 @@ PESSOA
 -- Estilização (bootstrap) - pendente
 -- Validar CPF -  pendente
 Pagina default erro - pendenete
+
+
+
