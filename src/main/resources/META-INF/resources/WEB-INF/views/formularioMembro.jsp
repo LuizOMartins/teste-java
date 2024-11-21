@@ -17,6 +17,9 @@
     <form action="/membros/salvar" method="post">
         <input type="hidden" name="id" value="${membro.id}" />
 
+        <br/><br/>
+
+
         <!-- Dados do Projeto -->
         <label for="projeto">Projeto:</label>
         <select name="projeto.id" required>
