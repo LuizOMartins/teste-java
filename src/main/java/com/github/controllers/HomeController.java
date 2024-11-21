@@ -50,6 +50,8 @@ public class HomeController {
         List<Pessoa> pessoas = pessoaService.listarTodos();
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("projetos", projetos);
+        Membros membro = (id != null) ? membrosService.buscarPorId(id) : new Membros();
+        model.addAttribute("membro", membro);
         return "formularioMembro";
     }
 

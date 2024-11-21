@@ -42,14 +42,14 @@ public class MembrosController {
 
     @PostMapping("/salvar")
     public String salvarMembro(@ModelAttribute Membros membro) {
-        System.out.println("Membro recebido:");
+        System.out.println("Salvando Membro:");
         System.out.println("ID: " + membro.getId());
         System.out.println("Projeto ID: " + (membro.getProjeto() != null ? membro.getProjeto().getId() : "null"));
         System.out.println("Pessoa ID: " + (membro.getPessoa() != null ? membro.getPessoa().getId() : "null"));
         System.out.println("Cargo: " + membro.getCargo());
         System.out.println("Data de Associação: " + membro.getDataAssociacao());
 
-
+        // Validações
         if (membro.getProjeto() == null || membro.getProjeto().getId() == null) {
             throw new IllegalArgumentException("Projeto não informado!");
         }
@@ -64,9 +64,9 @@ public class MembrosController {
         membro.setProjeto(projeto);
 
         membrosService.salvar(membro);
+
         return "redirect:/gerenciamentoMembros";
     }
-
 
     @GetMapping("/formularioMembro")
     public String formularioMembro(@RequestParam(required = false) Long id, Model model) {

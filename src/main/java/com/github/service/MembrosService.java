@@ -23,15 +23,13 @@ public class MembrosService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-
-
     public MembrosService(MembrosRepository membrosRepository) {
         this.membrosRepository = membrosRepository;
     }
 
     public Membros buscarPorId(Long id) {
-        Optional<Membros> membro = membrosRepository.findById(id);
-        return membro.orElse(null);
+        return membrosRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Membro não encontrado com o ID: " + id));
     }
 
     public void deletar(Long id) {
