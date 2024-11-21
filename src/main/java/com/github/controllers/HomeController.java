@@ -25,7 +25,9 @@ public class HomeController {
     }
 
     @GetMapping({"/", "/gerenciamentoProjetos"})
-    public String home() {
+    public String home(Model model) {
+        List<Projeto> projetos = projetoService.listarTodos();
+        model.addAttribute("projetos", projetos);
         return "gerenciamentoProjetos";
     }
 

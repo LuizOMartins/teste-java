@@ -4,8 +4,8 @@ PESSOA
 - Cadastro pessoa: gerente ou funcionario - ok
 - Tela Gerenciamento - ok
 
-- Tela Cadastro Projeto
---Gerenciamento Projeto
+- Tela Cadastro Projeto - ok
+--Gerenciamento Projeto - listagem
 
 
 - Tela Membros
@@ -15,3 +15,5 @@ PESSOA
 --Aplicar Regras
 --Aplicar testes
 -- Estilização (bootstrap)
+-- Validar CPF
+Pagina default erro

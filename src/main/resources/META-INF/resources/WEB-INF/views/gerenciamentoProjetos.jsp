@@ -48,8 +48,8 @@
                     <td>${projeto.gerente != null ? projeto.gerente.nome : 'Não atribuído'}</td>
                     <td>
                         <!-- Links para Editar e Remover -->
-                        <a href="/projetos/editar?id=${projeto.id}">Editar</a> |
-                        <a href="/projetos/remover?id=${projeto.id}" onclick="return confirm('Deseja realmente excluir este projeto?');">Remover</a>
+                        <a href="/formularioProjetos?id=${projeto.id}">Editar</a>&nbsp;
+                        <a href="/projetos?id=${projeto.id}" onclick="return confirm('Deseja realmente excluir este projeto?');">Remover</a>
                     </td>
                 </tr>
             </c:forEach>
