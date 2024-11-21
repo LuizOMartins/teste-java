@@ -7,13 +7,13 @@ PESSOA
 - Tela Cadastro Projeto - ok
 --Gerenciamento Projeto - ok
 
+- Tela Membros - ok
+--Tela Gerenciamento de Membros - ok
 
-- Tela Membros - andamento
---Tela Gerenciamento de Membros
 
-
---Aplicar Regras
---Aplicar testes
--- Estilização (bootstrap)
--- Validar CPF
-Pagina default erro
+-- Desassociar membro do projeto pendente
+--Aplicar Regras - pendente
+--Aplicar testes - pendente
+-- Estilização (bootstrap) - pendente
+-- Validar CPF -  pendente
+Pagina default erro - pendenete
