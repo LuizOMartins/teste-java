@@ -4,6 +4,7 @@ package com.github.dtos;
 import java.util.Date;
 
 public class ProjetoDTO {
+    private Long id;
     private String nome;
     private String descricao;
     private String status;
@@ -84,6 +85,14 @@ public class ProjetoDTO {
 
     public void setGerenteId(Long gerenteId) {
         this.gerenteId = gerenteId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

@@ -43,7 +43,17 @@ public class ProjetoController {
 
     @PostMapping("/salvar")
     public String criarProjeto(@RequestBody ProjetoDTO projetoDTO) {
-        Projeto projeto = new Projeto();
+        Projeto projeto;
+
+        if (projetoDTO.getId() != null) {
+            projeto = projetoService.buscarPorId(projetoDTO.getId());
+            if (projeto == null) {
+                throw new RuntimeException("Projeto não encontrado para o ID: " + projetoDTO.getId());
+            }
+        } else {
+            projeto = new Projeto();
+        }
+
         projeto.setNome(projetoDTO.getNome());
         projeto.setDescricao(projetoDTO.getDescricao());
         projeto.setStatus(projetoDTO.getStatus());
@@ -52,13 +62,15 @@ public class ProjetoController {
         projeto.setDataInicio(projetoDTO.getDataInicio());
         projeto.setDataPrevisaoFim(projetoDTO.getDataPrevisaoFim());
         projeto.setDataFim(projetoDTO.getDataFim());
+
         Pessoa gerente = pessoaService.buscarPorId(projetoDTO.getGerenteId());
+        if (gerente == null) {
+            throw new RuntimeException("Gerente não encontrado para o ID: " + projetoDTO.getGerenteId());
+        }
         projeto.setGerente(gerente);
         projetoService.salvar(projeto);
         return "redirect:/gerenciamentoProjetos";
     }
-
-
 
 
     @PutMapping("/{id}")

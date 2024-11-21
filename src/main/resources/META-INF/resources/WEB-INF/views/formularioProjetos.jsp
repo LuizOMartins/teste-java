@@ -95,7 +95,6 @@
 
             console.log(jsonData,'antes');
             jsonData['gerenteId'] = jsonData['gerente.id'];
-            delete jsonData['id'];
             delete jsonData['gerente.id'];
 
             console.log(jsonData,'depois');
